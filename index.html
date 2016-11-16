@@ -10,35 +10,19 @@
 <body>
 	<div id="page">
 		<h1>PayPal payment buttons</h1>
-		<p>Integrating with the experimental PayPal JavaScript buttons is as easy as including a small snippet of code. To get started:</p>
-
-		<ol>
-			<li><a href="#custom">Customize your button</a></li>
-			<li><a href="#addbutton">Add the button to your site</a></li>
-		</ol>
-
-		<h3 id="custom">Customize your button</h3>
-		<ol>
-			<li>Click <strong>Customize &amp; Preview</strong> to get a lightbox where you can customize your button code with your merchant ID, product name, price and other options.</li>
-			<li>Click <strong>Preview</strong> in the lightbox to see a preview of your newly created button.</li>
-			<li>Click on the button to test it out.</li>
-		</ol>
-
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#buynow" data-toggle="tab">Buy Now</a></li>
-			<li><a href="#cart" data-toggle="tab">Add to Cart</a></li>
-			<li><a href="#donate" data-toggle="tab">Donate</a></li>
-			<li><a href="#subscribe" data-toggle="tab">Subscribe</a></li>
 		</ul>
 
 		<div class="tab-content">
 			<div id="buynow" class="tab-pane example active">
 				<p>Buy Now buttons are perfect for single item purchases <a href="#buyNowModal" class="edit" role="button" data-toggle="modal" data-keyboard="true"><span class="icon icon-edit"></span> Customize &amp; Preview</a></p>
 
-<pre><code>&lt;script src="paypal-button-in.js?merchant=YOUR_MERCHANT_ID"
+<pre><code>&lt;script src="paypal-button-in.js?merchant=shop@example.com"
     data-button="buynow"
     data-name="My product"
-    data-amount="1.00"
+    data-amount="10000.00"
+    data-currency="INR"
     async
 &gt;&lt;/script&gt;</code></pre>
 
@@ -49,7 +33,7 @@
 						<div class="control-group">
 							<label class="control-label" for="buyNowMerchant">Merchant</label>
 							<div class="controls">
-								<input type="text" id="buyNowMerchant" name="business" required="required" value="" autocomplete="off" />
+								<input type="text" id="buyNowMerchant" name="business" required="required" value="shop@example.com" autocomplete="off" />
 								<span class="help-inline">Required</span>
 								<span class="help-inline">Email address or merchant ID</span>
 							</div>
@@ -57,25 +41,25 @@
 						<div class="control-group">
 							<label class="control-label" for="buyNowName">Name</label>
 							<div class="controls">
-								<input type="text" id="buyNowName" name="name" placeholder="My product" value="" autocomplete="off" />
+								<input type="text" id="buyNowName" name="name" placeholder="My product" value="My product" autocomplete="off" />
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="buyNowQuantity">Quantity</label>
 							<div class="controls">
-								<input type="text" id="buyNowQuantity" name="quantity" value="" placeholder="1" autocomplete="off" />
+								<input type="text" id="buyNowQuantity" name="quantity" value="1" placeholder="1" autocomplete="off" />
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="buyNowAmount">Amount</label>
 							<div class="controls">
-								<input type="text" id="buyNowAmount" name="amount" placeholder="5.00" value="" autocomplete="off" />
+								<input type="text" id="buyNowAmount" name="amount" placeholder="10000.00" value="10000" autocomplete="off" />
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="buyNowCurrency">Currency</label>
 							<div class="controls">
-								<input type="text" id="buyNowCurrency" name="currency" placeholder="USD" value="" autocomplete="off" maxlength="3" />
+								<input type="text" id="buyNowCurrency" name="currency" placeholder="INR" value="INR" autocomplete="off" maxlength="3" />
 							</div>
 						</div>
 						<div class="control-group">
@@ -114,336 +98,17 @@
 				</div>
 
 				<div class="tryit">
-					<script src="./dist/paypal-button-in.js"
+					<script src="./dist/paypal-button-in.js?merchant=shop@example.com"
 					    data-button="buynow"
 					    data-name="My product!"
-					    data-amount="1.00"
+					    data-amount="1000.00"
+					    data-currency="INR"
 					    async
 					></script>
 				</div>
 			</div>
 
 
-			<div id="cart" class="tab-pane example">
-				<p>Add To Cart buttons let users add multiple items instantly giving your website a cart <a href="#cartModal" class="edit" role="button" data-toggle="modal" data-keyboard="true"><span class="icon icon-edit"></span> Customize &amp; Preview</a></p>
-
-<pre><code>&lt;script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    data-button="cart"
-    data-name="Product in your cart"
-    data-amount="1.00"
-    async
-&gt;&lt;/script&gt;</code></pre>
-
-
-				<div id="cartModal" class="editable modal hide fade" role="dialog" aria-hidden="true">
-					<form action="#" class="modal-body form-horizontal">
-						<input type="hidden" name="button" value="cart" />
-						<div class="control-group">
-							<label class="control-label" for="cartMerchant">Merchant</label>
-							<div class="controls">
-								<input type="text" id="cartMerchant" name="business" required="required" value="" autocomplete="off" />
-								<span class="help-inline">Required</span>
-								<span class="help-inline">Email address or merchant ID</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartName">Name</label>
-							<div class="controls">
-								<input type="text" id="cartName" name="name" required="required" placeholder="Product in your cart" value="" autocomplete="off" />
-								<span class="help-inline">Required</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartQuantity">Quantity</label>
-							<div class="controls">
-								<input type="text" id="cartQuantity" name="quantity" value="" placeholder="1" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartAmount">Amount</label>
-							<div class="controls">
-								<input type="text" id="cartAmount" name="amount" required="required" placeholder="5.00" value="" autocomplete="off" />
-								<span class="help-inline">Required</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartCurrency">Currency</label>
-							<div class="controls">
-								<input type="text" id="cartCurrency" name="currency" placeholder="USD" value="" autocomplete="off" maxlength="3" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartShipping">Shipping</label>
-							<div class="controls">
-								<input type="text" id="cartShipping" name="shipping" placeholder="0.75" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartTax">Tax</label>
-							<div class="controls">
-								<input type="text" id="cartTax" name="tax" placeholder="3.50" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartCallback">Callback URL</label>
-							<div class="controls">
-								<input type="text" id="cartCallback" name="callback" value="" autocomplete="off" placeholder="http://mysite.com/callback" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="cartEnvironment">Environment</label>
-							<div class="controls">
-								<label class="checkbox">
-								  <input type="checkbox" id="cartEnvironment" name="env" value="sandbox">
-								  Sandbox
-								</label>
-							</div>
-						</div>
-					</form>
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal">Close</button>
-    					<button class="btn btn-primary" data-modal-save="true">Preview</button>
-  					</div>
-				</div>
-
-				<div class="tryit">
-					<script src="./dist/paypal-button-in.js?merchant="
-					    data-button="cart"
-					    data-name="Product in your cart"
-					    data-amount="1.00"
-					    async
-					></script>
-				</div>
-			</div>
-
-			<div id="donate" class="tab-pane example">
-				<p>Donate buttons are great for accepting donations from users <a href="#donateModal" class="edit" role="button" data-toggle="modal" data-keyboard="true"><span class="icon icon-edit"></span> Customize &amp; Preview</a></p>
-
-<pre><code>&lt;script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    data-button="donate"
-    data-name="My product"
-    data-amount="1.00"
-    async
-&gt;&lt;/script&gt;</code></pre>
-
-
-				<div id="donateModal" class="editable modal hide fade" role="dialog" aria-hidden="true">
-					<form action="#" class="modal-body form-horizontal">
-						<input type="hidden" name="button" value="donate" />
-						<div class="control-group">
-							<label class="control-label" for="buyNowMerchant">Merchant</label>
-							<div class="controls">
-								<input type="text" id="buyNowMerchant" name="business" required="required" value="" autocomplete="off" />
-								<span class="help-inline">Required</span>
-								<span class="help-inline">Email address or merchant ID</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowName">Name</label>
-							<div class="controls">
-								<input type="text" id="buyNowName" name="name" placeholder="My product" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowQuantity">Quantity</label>
-							<div class="controls">
-								<input type="text" id="buyNowQuantity" name="quantity" value="" placeholder="1" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowAmount">Amount</label>
-							<div class="controls">
-								<input type="text" id="buyNowAmount" name="amount" placeholder="5.00" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowCurrency">Currency</label>
-							<div class="controls">
-								<input type="text" id="buyNowCurrency" name="currency" placeholder="USD" value="" autocomplete="off" maxlength="3" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowShipping">Shipping</label>
-							<div class="controls">
-								<input type="text" id="buyNowShipping" name="shipping" placeholder="0.75" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowTax">Tax</label>
-							<div class="controls">
-								<input type="text" id="buyNowTax" name="tax" placeholder="3.50" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowCallback">Callback URL</label>
-							<div class="controls">
-								<input type="text" id="buyNowCallback" name="callback" placeholder="http://mysite.com/callback" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowEnvironment">Environment</label>
-							<div class="controls">
-								<label class="checkbox">
-								  <input type="checkbox" id="buyNowEnvironment" name="env" value="sandbox">
-								  Sandbox
-								</label>
-							</div>
-						</div>
-					</form>
-
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal">Close</button>
-    					<button class="btn btn-primary" data-modal-save="true">Preview</button>
-  					</div>
-				</div>
-
-				<div class="tryit">
-					<script src="./dist/paypal-button-in.js?merchant="
-					    data-button="donate"
-					    data-name="My product!"
-					    data-amount="1.00"
-					    async
-					></script>
-				</div>
-			</div>
-
-
-			<div id="subscribe" class="tab-pane example">
-				<p>Subscribe buttons can be used to set up payment subscriptions with your users <a href="#subscribeModal" class="edit" role="button" data-toggle="modal" data-keyboard="true"><span class="icon icon-edit"></span> Customize &amp; Preview</a></p>
-
-<pre><code>&lt;script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    data-button="subscribe"
-    data-name="My product"
-    data-amount="1.00"
-    data-recurrence="1"
-    data-period="M"
-    async
-&gt;&lt;/script&gt;</code></pre>
-
-
-				<div id="subscribeModal" class="editable modal hide fade" role="dialog" aria-hidden="true">
-					<form action="#" class="modal-body form-horizontal">
-						<input type="hidden" name="button" value="subscribe" />
-						<div class="control-group">
-							<label class="control-label" for="buyNowMerchant">Merchant</label>
-							<div class="controls">
-								<input type="text" id="buyNowMerchant" name="business" required="required" value="" autocomplete="off" />
-								<span class="help-inline">Required</span>
-								<span class="help-inline">Email address or merchant ID</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowName">Name</label>
-							<div class="controls">
-								<input type="text" id="buyNowName" name="name" placeholder="My product" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowRecurringAmount">Amount</label>
-							<div class="controls">
-								<input type="text" id="buyNowRecurringAmount" name="amount" placeholder="5.00" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowRecurringCurrency">Currency</label>
-							<div class="controls">
-								<input type="text" id="buyNowRecurringCurrency" name="currency" placeholder="USD" value="" autocomplete="off" maxlength="3" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowNumberOfPeriods">Recurrences</label>
-							<div class="controls">
-								<input type="text" id="buyNowNumberOfPeriods" name="recurrence" placeholder="2" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowPeriodType">Type of Period</label>
-							<div class="controls">
-								<select id="buyNowPeriodType" name="period">
-									<option value="D">Days</option>
-									<option value="W">Weeks</option>
-									<option value="M">Months</option>
-									<option value="Y">Years</option>
-								</select>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowCallback">Callback URL</label>
-							<div class="controls">
-								<input type="text" id="buyNowCallback" name="callback" placeholder="http://mysite.com/callback" value="" autocomplete="off" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="buyNowEnvironment">Environment</label>
-							<div class="controls">
-								<label class="checkbox">
-								  <input type="checkbox" id="buyNowEnvironment" name="env" value="sandbox">
-								  Sandbox
-								</label>
-							</div>
-						</div>
-					</form>
-
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal">Close</button>
-    					<button class="btn btn-primary" data-modal-save="true">Preview</button>
-  					</div>
-				</div>
-
-				<div class="tryit">
-					<script src="./dist/paypal-button-in.js?merchant="
-					    data-button="subscribe"
-					    data-name="My product!"
-					    data-a3="1.00"
-					    data-p3="1"
-					    data-t3="M"
-					    async
-					></script>
-				</div>
-			</div>
-
-		</div>
-		<p><em>Important:</em> Unless you enable the sandbox environment, all payments made using this code will be live and not test payments.</p>
-
-
-		<h3 id="addbutton">Add the button to your site</h3>
-		<ol>
-			<li>
-				<p>Get your Merchant ID or email address. You'll need to add it to the code above. If you&apos;re logged in to PayPal and have a business account, you can get your Merchant ID on your <a target="_blank" href="https://www.paypal.com/webapps/customerprofile/summary.view">account
-				profile page</a>.</p>
-			</li>
-			<li>
-				<p>Download this JavaScript file and add it to your site.</p>
-				<ul>
-					<li>
-						<p>
-							<strong><a href="./dist/paypal-button-in.js">JavaScript Buttons</a></strong><br />
-							Basic support for PayPal's JavaScript buttons
-						</p>
-					</li>
-				</ul>
-				<p>In the generated button code, you can edit the path to the PayPal Button JavaScript file, if needed.</p>
-			</li>
-			<li>
-				<p>Copy and paste the HTML snippet you customized above, and you're ready to start selling!</p>
-			</li>
-		</ol>
-
-		<h3>Environment</h3>
-		<p>In order to test your implementation before going live you can use our sandbox environment. Please check the <a href="http://developer.paypal.com/">Developer Portal</a> for further information.</p>
-
-		<h3>Callback</h3>
-		<p>On completion of a transaction you can get a payment notification (<a href="https://developer.paypal.com/webapps/developer/docs/classic/ipn/integration-guide/IPNIntro/">IPN</a>) on a callback URL you specify using the callback attribute. An IPN simulator is <a href="https://developer.paypal.com/webapps/developer/applications/ipn_simulator">available on the sandbox</a> to help you test your integration.</p>
-		
-		<h3>Customization</h3>
-		<p>For advanced needs, there's a JavaScript API that can be used to pragmatically create buttons, localization support, and the ability to create user-editable inputs. Find out how in the <a href="https://github.com/paypal/JavaScriptButtons#editable-inputs">README</a> file.
-
-		<h3>Browser support</h3>
-		<p>The JavaScript buttons have been tested and work in all modern browsers including: Chrome, Safari, Firefox and Internet Explorer 7+.
-
-		<h3>Find out more</h3>
-		<p>This project is <a href="https://github.com/paypal/JavaScriptButtons">hosted on Github</a>. Feature requests and issues can be filed on the <a href="https://github.com/paypal/JavaScriptButtons/issues">issue tracker</a>.</p>
-	</div>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
