@@ -62,7 +62,7 @@
 		if (data.button && data.button.value === 'cart') {
 			el.src = 'https://www.paypalobjects.com/js/external/paypal-button-minicart.min.js?merchant=' + data.business.value;
 		} else {
-			el.src = 'https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=' + data.business.value;
+			el.src = '../dist/paypal-button-in.js?merchant=' + data.business.value;
 		}
 
 		for (key in data) {
