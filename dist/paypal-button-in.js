@@ -11,7 +11,7 @@ if (typeof PAYPAL === 'undefined' || !PAYPAL) {
 PAYPAL.apps = PAYPAL.apps || {};
 PAYPAL.exchangeRates = null;
 
-function loadExhangeRate(callback) {
+function loadExchangeRate(callback) {
 	var script,
 		url = 'https://api.fixer.io/latest?callback=storeExchangeRate&base=INR&symbols=USD,GBP',
 		backupCallback;
@@ -33,6 +33,7 @@ function loadExhangeRate(callback) {
 	script.src = url;
 
 	window.storeExchangeRate = function (data) {
+		delete window.storeExchangeRate;
 		console.log(data);
 		PAYPAL.exchangeRates = data.rates;
 		document.getElementsByTagName('head')[0].removeChild(script);
@@ -43,7 +44,7 @@ function loadExhangeRate(callback) {
 }
 
 
-loadExhangeRate(function () {
+loadExchangeRate(function () {
 
 	'use strict';
 
