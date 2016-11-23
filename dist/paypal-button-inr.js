@@ -128,5 +128,5 @@ PAYPAL.exchangeRates = null;
 		resetExchangeRate();
 	};
 
-	loadScript('https://api.fixer.io/latest?callback=storeExchangeRate&base=INR&symbols=USD,GBP');
+	loadScript('https://api.fixer.io/latest?callback=storeExchangeRate&base=INR&symbols=USD,GBP,EUR');
 }());
