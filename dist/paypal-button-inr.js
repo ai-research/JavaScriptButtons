@@ -56,17 +56,22 @@ PAYPAL.exchangeRates = null;
 		if (rate) {
 			forms = document.getElementsByTagName("form");
 			while (forms[index]) {
-				fields = getInrFields(forms[index], rate);
-				if (fields) {
-					setInrFieldValues(forms[index], fields, rate);
-				}
+				setInrFieldValues(forms[index], rate);
 				index++;
 			}
 		}
 	}
 
-	function setInrFieldValues(form, fields, rate) {
-		var index = 0;
+	function setInrFieldValues(form, rate) {
+		var index = 0,
+			fields,
+			amt;
+
+		fields = getInrFields(form);
+		if (!fields) {
+			return;
+		}
+
 		form.currencyField.value = rate.currency;
 		while(fields[index]) {
 			if (!fields[index].inrValue) {
@@ -75,6 +80,15 @@ PAYPAL.exchangeRates = null;
 			fields[index].value = fields[index].inrValue * rate.value;
 			index++;
 		}
+
+		if (!form.textField) {
+			form.textField = document.createElement('small');
+			var pTag = document.createElement('p');
+			pTag.appendChild(form.textField);
+			form.appendChild(pTag);
+		}
+		amt = (rate.value * form.amountField.inrValue).toFixed(2);
+		form.textField.innerHTML = ' Your total in ' + rate.currency + ': ' +  amt + ' ' + rate.currency;
 	}
 
 	function getInrFields(form) {
@@ -91,6 +105,9 @@ PAYPAL.exchangeRates = null;
 			if (nodes[index].value === 'INR' && nodes[index].name === 'currency_code') {
 				form.currencyField = nodes[index];
 				isInrEnable = true;
+			} else if (nodes[index].name === 'amount') {
+				form.amountField = nodes[index];
+				fields.push(nodes[index]);
 			} else if (['amount', 'tax', 'shipping'].indexOf(nodes[index].name) >= 0) {
 				fields.push(nodes[index]);
 			}
@@ -105,12 +122,12 @@ PAYPAL.exchangeRates = null;
 		return null;
 	}
 
-
 	loadScript('https://www.paypalobjects.com/js/external/paypal-button.min.js', function () {
 		if (!PAYPAL.apps.backupButtonFactoryCreate) {
 			PAYPAL.apps.backupButtonFactoryCreate = PAYPAL.apps.ButtonFactory.create;
 			PAYPAL.apps.ButtonFactory.create = function () {
 				var button = PAYPAL.apps.backupButtonFactoryCreate.apply(PAYPAL.apps.ButtonFactory, arguments);
+				setInrFieldValues(button, getExchangeRate());
 				button.onsubmit = resetExchangeRate;
 				return button;
 			};
