@@ -40,7 +40,7 @@ PAYPAL.exchangeRates = null;
 			while(el.childNodes[i]) {
 				currency = el.childNodes[i].value;
 				if (currency && rates[currency]) {
-					amt = Math.round(100/rates[currency]) / 100;
+					amt = (1/rates[currency]).toFixed(2);
 					el.childNodes[i].text = el.childNodes[i].text.replace(/\d+.$/, amt + ')');
 				}
 				i = i + 1;
