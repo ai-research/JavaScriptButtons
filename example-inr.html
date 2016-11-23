@@ -97,14 +97,20 @@
   					</div>
 				</div>
 
-				<div class="tryit">
-					<script src="./dist/paypal-button-inr.js?merchant=shop@example.com"
-					    data-button="buynow"
-					    data-name="My product!"
-					    data-amount="10000.00"
-					    data-currency="INR"
-					    async
-					></script>
+				<div>
+						<select id="exchange-rates" class="form-control" style="float: left; width: 150px; margin-right: 10px;">
+							<option value="USD">USD ($1=₹65)</option>
+							<option value="GBP">GBP (£1=₹100)</option>
+						</select>
+						<div class="tryit">
+						<script src="./dist/paypal-button-inr.js?merchant=shop@example.com"
+							data-button="buynow"
+							data-name="My product!"
+							data-amount="10000.00"
+							data-currency="INR"
+							async
+						></script>
+						</div>
 				</div>
 			</div>
 
